@@ -7,7 +7,7 @@
 
 @testable import App
 import Vapor
-import FluentSQLite
+import FluentPostgreSQL
 
 extension Application {
 

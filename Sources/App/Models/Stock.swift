@@ -5,7 +5,7 @@
 //  Created by Akshit Zaveri on 23/03/20.
 //
 
-import FluentSQLite
+import FluentPostgreSQL
 import Vapor
 
 final class Stock {
@@ -33,7 +33,7 @@ final class Stock {
   }
 }
 
-extension Stock: SQLiteModel { }
+extension Stock: PostgreSQLModel { }
 
 extension Stock: Codable { }
 

@@ -8,18 +8,18 @@
 import XCTest
 @testable import App
 import Vapor
-import FluentSQLite
+import FluentPostgreSQL
 
 class StockControllerTests: XCTestCase {
 
   var app: Application!
-  var connection: SQLiteConnection!
+  var connection: PostgreSQLConnection!
 
   override func setUp() {
     super.setUp()
 
     app = try! Application.testable()
-    connection = try! app.newConnection(to: .sqlite).wait()
+    connection = try! app.newConnection(to: .psql).wait()
   }
 
   override func tearDown() {
