@@ -18,3 +18,6 @@
         <img src="http://img.shields.io/badge/swift-5.1-brightgreen.svg" alt="Swift 5.1">
     </a>
 </p>
+
+This server is specifically made for below sample iOS app
+https://github.com/akshitzaveri/StockAnalytics
