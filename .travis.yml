@@ -4,7 +4,7 @@ osx_image: xcode11.3
 before_script:
   - gem install xcpretty
 script:
-  - brew install openssl@1.1
+  - brew reinstall openssl@1.1
   - swift package generate-xcodeproj
   - set -o pipefail && xcodebuild -scheme StockServer-Package -enableCodeCoverage YES clean build test | xcpretty
 after_success:
