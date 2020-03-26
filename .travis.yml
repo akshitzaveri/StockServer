@@ -11,6 +11,6 @@ before_script:
 script:
   - brew reinstall openssl@1.1
   - swift package generate-xcodeproj
-  - set -o pipefail && xcodebuild -scheme StockServer-Package -enableCodeCoverage YES clean build test | xcpretty
+  - set -o pipefail && xcodebuild -scheme Run -enableCodeCoverage YES clean build test | xcpretty
 after_success:
   - bash <(curl -s https://codecov.io/bash)
