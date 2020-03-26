@@ -5,4 +5,4 @@ before script:
   - gem install xcpretty
 script:
   - swift package generate-xcodeproj
-  - set -o pipefail && xcodebuild -scheme StockServer-Package clean build | xcpretty
+  - set -o pipefail && xcodebuild -scheme StockServer-Package clean build test | xcpretty
