@@ -1,0 +1,4 @@
+module CCryptoOpenSSL {
+    umbrella "/Users/akshitzaveri/Google Drive/Work/Codebase/GitHub Demos/StockServer/.build/checkouts/crypto/Sources/CCryptoOpenSSL/include"
+    export *
+}
