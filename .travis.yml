@@ -1,0 +1,5 @@
+language: swift
+xcode_project: StockServer.xcodeproj
+xcode_scheme: Run
+xcode_destination: platform=iOS Simulator,OS=13.2,name=iPhone X
+osx_image: xcode11.3
