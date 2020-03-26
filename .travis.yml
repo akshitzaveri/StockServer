@@ -1,8 +1,11 @@
 language: swift
 os: osx
 osx_image: xcode11.3
+services:
+  - postgresql
 before_script:
   - gem install xcpretty
+  - psql -c 'create database stockserver_test;' -U postgres
 script:
   - brew reinstall openssl@1.1
   - swift package generate-xcodeproj

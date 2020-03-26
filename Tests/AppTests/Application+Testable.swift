@@ -11,16 +11,39 @@ import FluentPostgreSQL
 
 extension Application {
 
-  static func testable() throws -> Application {
+  static func testable(envArgs: [String]? = nil) throws -> Application {
     
     var config = Config.default()
     var services = Services.default()
     var env = Environment.testing
-    try App.configure(&config, &env, &services)
-    let app = try Application(config: config, environment: env, services: services)
+
+    if let args = envArgs { env.arguments = args }
+
+    try App.configure(
+      &config,
+      &env,
+      &services
+    )
+    let app = try Application(
+      config: config,
+      environment: env,
+      services: services
+    )
     try App.boot(app)
 
     return app
+  }
+
+  static func reset() throws {
+    let revertEnvironment = ["vapor", "revert", "--all", "-y"]
+    let revertionApp = try Application.testable(envArgs: revertEnvironment)
+    try revertionApp.asyncRun().wait()
+//    try app1.syncShutdownGracefully()
+
+    let migrateEnvironment = ["vapor", "migrate", "-y"]
+    let migrationApp = try Application.testable(envArgs: migrateEnvironment)
+    try migrationApp.asyncRun().wait()
+//    try app2.syncShutdownGracefully()
   }
 }
 

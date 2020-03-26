@@ -17,7 +17,7 @@ class StockControllerTests: XCTestCase {
 
   override func setUp() {
     super.setUp()
-
+    try! Application.reset()
     app = try! Application.testable()
     connection = try! app.newConnection(to: .psql).wait()
   }
@@ -25,9 +25,11 @@ class StockControllerTests: XCTestCase {
   override func tearDown() {
     super.tearDown()
     connection.close()
+    try? app.syncShutdownGracefully()
   }
 
   func test_WhenNewStockRequest_ThenStockIsAdded() throws {
+    // Saving the Stock
     let stock = Stock(
       name: "SENSEX",
       currentPrice: 3424.2,
@@ -42,6 +44,7 @@ class StockControllerTests: XCTestCase {
 
     XCTAssertEqual(createdStock.name, "SENSEX")
 
+    // Retrieving the Stock which was just saved
     let body: EmptyBody? = nil
     let getStocksResponse = try app.sendRequest(
       to: "api/stocks",
