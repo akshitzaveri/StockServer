@@ -6,9 +6,10 @@ osx_image: xcode11.3
 #addons:
 #  postgresql: '12.2'
 install:
-  - sudo apt-get install -yq --no-install-suggests --no-install-recommends postgresql-common
+  - brew install postgresql
+#  - sudo apt-get install -yq --no-install-suggests --no-install-recommends postgresql-common
   - sudo service postgresql stop
-  - sudo apt install -yq --no-install-suggests --no-install-recommends postgresql-11 postgresql-client-11
+#  - sudo apt install -yq --no-install-suggests --no-install-recommends postgresql-11 postgresql-client-11
   - sudo service postgresql start 11
   - sudo -u postgres psql -c 'create database stockserver_test;'
 before_script:
